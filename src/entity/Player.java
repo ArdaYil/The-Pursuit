@@ -1,6 +1,7 @@
 package entity;
 
 import main.Game;
+import main.KeyboardInput;
 
 import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
@@ -9,12 +10,20 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Player extends Entity {
-    BufferedImage up1, up2, up3, down1, down2, down3, right1, right2, right3, left1, left2, left3;
-    Game game;
+    private BufferedImage up1, up2, up3, down1, down2, down3, right1, right2, right3, left1, left2, left3;
+    private BufferedImage currentImage = up1;
+    private Game game;
+    private KeyboardInput keyInput;
+    private int screenX;
+    private int screenY;
 
-    public Player() {
+    public Player(KeyboardInput keyInput) {
         this.setDefaultValues();
         this.setPlayerImages();
+        this.keyInput = keyInput;
+
+        this.screenX = this.game.screenWidth/2 - this.game.tileSize/2;
+        this.screenY = this.game.screenHeight/2 - this.game.tileSize/2;
     }
 
     public void setPlayerImages() {
@@ -39,22 +48,50 @@ public class Player extends Entity {
     }
 
     public void update() {
+        if (this.keyInput.upPressed) {
+            this.setDirection("up");
+            this.walkY();
+        }
 
+        else if (this.keyInput.downPressed) {
+            this.setDirection("down");
+            this.walkY();
+        }
+
+        else if (this.keyInput.leftPressed) {
+            this.setDirection("left");
+            this.walkX();
+        }
+
+        else if (this.keyInput.rightPressed) {
+            this.setDirection("right");
+            this.walkX();
+        }
+    }
+
+    private void getImageToDraw() {
+        
     }
 
     public void draw(Graphics2D g2) {
-        BufferedImage image = this.up1;
+        BufferedImage image = this.currentImage;
 
         int tileSize = this.game.tileSize;
-        int drawX = this.game.screenWidth/2 - tileSize/2;
-        int drawY = this.game.screenHeight/2 - tileSize/2;
 
-        g2.drawImage(image, drawX, drawY, tileSize, tileSize, null);
+        g2.drawImage(image, this.screenX, this.screenY, tileSize, tileSize, null);
     }
 
     private void setDefaultValues() {
-        this.setX(100);
-        this.setY(100);
+        this.setX(this.game.tileSize * 10);
+        this.setY(this.game.tileSize * 10);
         this.setSpeed(3);
+    }
+
+    public int getScreenX() {
+        return this.screenX;
+    }
+
+    public int getScreenY() {
+        return this.screenY;
     }
 }

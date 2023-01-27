@@ -22,18 +22,20 @@ public class Game extends JPanel implements Runnable{
 
     private static final int FPS = 60;
 
-    Map map;
-    Thread gameThread;
-    Player player;
+    public Map map;
+    public Thread gameThread;
+    public Player player;
+    public KeyboardInput keyInput = new KeyboardInput();
 
     public Game() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setDoubleBuffered(true);
         this.setBackground(new Color(0, 0, 0));
-
         this.map = new Map(this);
+        this.addKeyListener(keyInput);
+        this.setFocusable(true);
 
-        player = new Player();
+        player = new Player(keyInput);
     }
 
     public void startGame() {

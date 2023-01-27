@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc169ed7-9714-459a-b102-73f3cb974b5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/maps/Test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/Map.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/map/Tile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/KeyboardInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/tiles/TreeTile.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/tiles/TreeTile.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/Map.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +39,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/arda.yildirim/Documents/JavaProjects/SwingPractice",
+    "last_opened_file_path": "C:/Users/Arda Yildirim/Documents/JavaProjects/SwingPractice",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -48,6 +49,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\arda.yildirim\Documents\JavaProjects\ThePursuit\res" />
       <recent name="C:\Users\arda.yildirim\Documents\JavaProjects\ThePursuit\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Arda Yildirim\Documents\JavaProjects\ThePursuit\res\tiles" />
     </key>
   </component>
   <component name="RunManager">

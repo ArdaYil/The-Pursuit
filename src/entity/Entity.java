@@ -35,11 +35,15 @@ public class Entity {
     }
 
     public void walkX() {
-        this.setX(this.getX() + this.getSpeed());
+        int factor = (this.direction == "left") ? -1 : 1;
+        int speed = this.getSpeed() * factor;
+        this.setX(this.getX() + speed);
     }
 
     public void walkY() {
-        this.setY(this.getY() + this.getSpeed());
+        int factor = (this.direction == "up") ? -1 : 1;
+        int speed = this.getSpeed() * factor;
+        this.setY(this.getY() + speed);
     }
 
     public void setDirection(String direction) {
