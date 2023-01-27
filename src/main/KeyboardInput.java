@@ -51,4 +51,8 @@ public class KeyboardInput implements KeyListener {
             rightPressed = false;
         }
     }
+
+    public boolean controlKeyPressed() {
+        return upPressed == true || leftPressed == true || downPressed == true || rightPressed == true;
+    }
 }

@@ -65,7 +65,7 @@ public class Map {
         for (int row = 0; row < this.game.worldRows; row++) {
             for (int col = 0; col < this.game.worldCols; col++) {
                 int number = this.map[col][row];
-                System.out.println(number);
+
                 Tile tile = this.tiles[number];
 
                 Player player = this.game.player;
