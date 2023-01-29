@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc169ed7-9714-459a-b102-73f3cb974b5c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/res/tiles/BrickWall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/tiles/Dirt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/tiles/LockedDoor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/tiles/UnlockedDoor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/tiles/WoodFloor.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/maps/Map001.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/maps/Map002.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/maps/Map003.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/maps/Map004.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/maps/Test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/Acrine.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/maps/Acrine.txt" beforeDir="false" afterPath="$PROJECT_DIR$/res/maps/Acrine.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/Tile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,19 +37,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Arda Yildirim/Documents/JavaProjects/ThePursuit&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Arda Yildirim/Documents/JavaProjects/ThePursuit/res/tiles",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Arda Yildirim\Documents\JavaProjects\ThePursuit\res\tiles" />
       <recent name="C:\Users\arda.yildirim\Documents\JavaProjects\ThePursuit\res" />
       <recent name="C:\Users\arda.yildirim\Documents\JavaProjects\ThePursuit\src" />
     </key>

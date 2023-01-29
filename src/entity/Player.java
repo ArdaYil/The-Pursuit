@@ -13,6 +13,8 @@ public class Player extends Entity {
     private KeyboardInput keyInput;
     private int imageCount = 1;
     private int counter = 0;
+    private int baseSpeed = 3;
+    private int sprintSpeed = 10;
 
     public Player(Game game, KeyboardInput keyInput) {
         super(game);
@@ -73,9 +75,9 @@ public class Player extends Entity {
 
     private void setDefaultValues() {
         this.setX(this.game.tileSize * 10);
-        this.setY(this.game.tileSize * 10);
+        this.setY(this.game.tileSize * 23);
         this.setDirection("up");
-        this.setSpeed(3);
+        this.setSpeed(this.baseSpeed);
     }
 
     @Override
@@ -102,6 +104,12 @@ public class Player extends Entity {
 
         else if (this.keyInput.rightPressed) {
             this.setDirection("right");
+        }
+
+        this.setSpeed(this.baseSpeed);
+
+        if (this.keyInput.sprintPressed) {
+            this.setSpeed(this.sprintSpeed);
         }
 
         counter++;

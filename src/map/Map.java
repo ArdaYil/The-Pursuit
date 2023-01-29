@@ -2,7 +2,6 @@ package map;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.geom.Dimension2D;
 import java.io.*;
 
 import entity.Player;
@@ -93,8 +92,6 @@ public class Map {
     }
 
     public Dimension initializeChunk(String filePath, int colMax, int rowMax) throws IOException {
-        System.out.println("RowMax: " + rowMax);
-        System.out.println("ColMax: " + colMax);
         InputStream inputStream = getClass().getResourceAsStream(filePath);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
@@ -133,6 +130,23 @@ public class Map {
             this.tiles[1] = new Tile();
             this.tiles[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/TreeTile.png"));
             this.tiles[1].canCollide = true;
+
+            this.tiles[2] = new Tile();
+            this.tiles[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/BrickWall.png"));
+            this.tiles[2].canCollide = true;
+
+            this.tiles[3] = new Tile();
+            this.tiles[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/UnlockedDoor.png"));
+
+            this.tiles[4] = new Tile();
+            this.tiles[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/LockedDoor.png"));
+            this.tiles[4].canCollide = true;
+
+            this.tiles[5] = new Tile();
+            this.tiles[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/WoodFloor.png"));
+
+            this.tiles[6] = new Tile();
+            this.tiles[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Dirt.png"));
         }
 
         catch(IOException ex) {
@@ -142,8 +156,7 @@ public class Map {
 
     public void draw(Graphics2D g2) {
         int tileSize = this.game.tileSize;
-        System.out.println(this.worldCols);
-        System.out.println(this.worldRows);
+
         for (int row = 0; row < this.worldRows; row++) {
             for (int col = 0; col < this.worldCols; col++) {
                 int number = this.map[col][row];
