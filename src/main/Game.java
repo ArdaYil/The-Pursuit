@@ -10,7 +10,7 @@ public class Game extends JPanel implements Runnable{
     private static final int originalTileSize = 16;
     private static final int tileScale = 3;
 
-    public static final int tileSize = originalTileSize * tileScale;
+    public static int tileSize = originalTileSize * tileScale;
     private static final int columns = 20;
     private static final int rows = 15;
 
@@ -28,6 +28,7 @@ public class Game extends JPanel implements Runnable{
     public KeyboardInput keyInput = new KeyboardInput();
 
     public Game() {
+        //tileSize = 16;
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setDoubleBuffered(true);
         this.setBackground(new Color(0, 0, 0));
@@ -35,7 +36,7 @@ public class Game extends JPanel implements Runnable{
         this.addKeyListener(keyInput);
         this.setFocusable(true);
 
-        player = new Player(keyInput);
+        player = new Player(this, keyInput);
     }
 
     public void startGame() {

@@ -10,20 +10,16 @@ import java.io.IOException;
 
 public class Player extends Entity {
     private BufferedImage up1, up2, up3, down1, down2, down3, right1, right2, right3, left1, left2, left3;
-    private Game game;
     private KeyboardInput keyInput;
-    private int screenX;
-    private int screenY;
     private int imageCount = 1;
     private int counter = 0;
 
-    public Player(KeyboardInput keyInput) {
+    public Player(Game game, KeyboardInput keyInput) {
+        super(game);
+
         this.setDefaultValues();
         this.setPlayerImages();
         this.keyInput = keyInput;
-
-        this.screenX = this.game.screenWidth/2 - this.game.tileSize/2;
-        this.screenY = this.game.screenHeight/2 - this.game.tileSize/2;
     }
 
     public void setPlayerImages() {
@@ -82,45 +78,52 @@ public class Player extends Entity {
         this.setSpeed(3);
     }
 
-    public int getScreenX() {
-        return this.screenX;
-    }
-
-    public int getScreenY() {
-        return this.screenY;
+    @Override
+    public void initializeCollisionBox() {
+        this.collisionBox = new Rectangle();
+        this.collisionBox.width = this.collisionBoxSize;
+        this.collisionBox.height = this.collisionBoxSize;
+        this.collisionBox.x = this.screenX;// - collisionBoxSize/2;
+        this.collisionBox.y = this.screenY;// - collisionBoxSize/2;
     }
 
     public void update() {
         if (this.keyInput.upPressed) {
             this.setDirection("up");
-            this.walkY();
         }
 
         else if (this.keyInput.downPressed) {
             this.setDirection("down");
-            this.walkY();
         }
 
         else if (this.keyInput.leftPressed) {
             this.setDirection("left");
-            this.walkX();
         }
 
         else if (this.keyInput.rightPressed) {
             this.setDirection("right");
-            this.walkX();
         }
 
         counter++;
 
-        if (!keyInput.controlKeyPressed()) return;
+        this.isColliding = false;
+        this.manageCollision();
 
-        if (counter >= 15) {
-            counter = 0;
-            imageCount++;
+        if (keyInput.controlKeyPressed()) {
+            if (counter >= 15) {
+                counter = 0;
+                imageCount++;
 
-            if (imageCount >= 4) {
-                imageCount = 1;
+                if (imageCount >= 4) {
+                    imageCount = 2;
+                }
+            }
+
+            if (this.isColliding == true) return;
+
+            switch(this.getDirection()) {
+                case "up", "down" -> this.walkY();
+                case "left", "right" -> this.walkX();
             }
         }
     }
@@ -129,6 +132,8 @@ public class Player extends Entity {
         BufferedImage image = this.getImageToDraw();
 
         int tileSize = this.game.tileSize;
+
+        System.out.println(this.collisionBox.x  + " " + this.collisionBox.y);
 
         g2.drawImage(image, this.screenX, this.screenY, tileSize, tileSize, null);
     }
