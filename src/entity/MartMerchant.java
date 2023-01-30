@@ -32,6 +32,6 @@ public class MartMerchant extends Entity {
 
         Vector2D drawPosition = this.game.map.getDrawingPosition(this.position, this.game.player);
         System.out.println(drawPosition.toString());
-        g2.drawImage(this.image, drawPosition.getX(), drawPosition.getY(), tileSize, tileSize, null);
+        g2.drawImage(this.image, drawPosition.getX() * tileSize, drawPosition.getY() * tileSize, tileSize, tileSize, null);
     }
 }

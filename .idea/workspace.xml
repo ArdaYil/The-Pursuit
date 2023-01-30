@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc169ed7-9714-459a-b102-73f3cb974b5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/res/staticEntities/MartMerchant.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/MartMerchant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/MartManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/vector/Vector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/vector/Vector2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/Array.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/MartMerchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/MartMerchant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MartManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MartManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -2,13 +2,14 @@ package main;
 
 import entity.MartMerchant;
 import vector.Vector2D;
+import util.Array;
 
 import java.awt.*;
 import java.util.Arrays;
 
 public class MartManager {
     public Game game;
-    public MartMerchant[] merchants = new MartMerchant[10];
+    public Array merchants = new Array(10);
 
     public MartManager(Game game) {
         this.game = game;
@@ -21,15 +22,16 @@ public class MartManager {
         merchant.position.setX(position.getX() * tileSize);
         merchant.position.setY(position.getY() * tileSize);
 
-        this.merchants[this.merchants.length] = merchant;
+        this.merchants.push(merchant);
     }
 
     public void draw(Graphics2D g2) {
-        System.out.println(Arrays.toString(this.merchants));
-        for (MartMerchant merchant : this.merchants) {
+        for (Object merchant : this.merchants.getArray()) {
             if (merchant == null) return;
-
-            merchant.draw(g2);
+            System.out.println(merchant);
+            if (merchant instanceof MartMerchant) {
+                ((MartMerchant)merchant).draw(g2);
+            }
         }
     }
 }

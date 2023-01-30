@@ -38,7 +38,7 @@ public class Game extends JPanel implements Runnable{
         this.addKeyListener(keyInput);
         this.setFocusable(true);
 
-        this.martManager.createMerchant(new Vector2D(1, 1));
+        this.martManager.createMerchant(new Vector2D(10, 23));
 
         player = new Player(this, keyInput);
     }
@@ -83,8 +83,8 @@ public class Game extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        this.martManager.draw(g2);
         this.map.draw(g2);
+        this.martManager.draw(g2);
         this.player.draw(g2);
 
         g2.dispose();
