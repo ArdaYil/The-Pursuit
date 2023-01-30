@@ -74,8 +74,8 @@ public class Player extends Entity {
     }
 
     private void setDefaultValues() {
-        this.setX(this.game.tileSize * 10);
-        this.setY(this.game.tileSize * 23);
+        this.position.setX(this.game.tileSize * 10);
+        this.position.setY(this.game.tileSize * 23);
         this.setDirection("up");
         this.setSpeed(this.baseSpeed);
     }
@@ -140,8 +140,6 @@ public class Player extends Entity {
         BufferedImage image = this.getImageToDraw();
 
         int tileSize = this.game.tileSize;
-
-        System.out.println(this.collisionBox.x  + " " + this.collisionBox.y);
 
         g2.drawImage(image, this.screenX, this.screenY, tileSize, tileSize, null);
     }

@@ -3,10 +3,9 @@ package entity;
 import java.awt.*;
 import main.Game;
 import map.Tile;
+import vector.Vector2D;
 
 public class Entity {
-    private int x;
-    private int y;
     private int speed;
     protected final int collisionBoxSize = 20;
     private String direction;
@@ -15,21 +14,15 @@ public class Entity {
     protected Game game;
     public int screenX;
     public int screenY;
+    public Vector2D position;
 
     public Entity(Game game) {
+        this.position = new Vector2D();
         this.game = game;
         this.isColliding = false;
         this.screenX = this.game.screenWidth/2 - this.game.tileSize/2;
         this.screenY = this.game.screenHeight/2 - this.game.tileSize/2;
         this.initializeCollisionBox();
-    }
-
-    public int getX() {
-        return this.x;
-    }
-
-    public int getY() {
-        return this.y;
     }
 
     public int getSpeed() {
@@ -40,14 +33,6 @@ public class Entity {
         return this.direction;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
     public void setSpeed(int speed) {
         this.speed = speed;
     }
@@ -55,13 +40,13 @@ public class Entity {
     public void walkX() {
         int factor = (this.direction == "left") ? -1 : 1;
         int speed = this.getSpeed() * factor;
-        this.setX(this.getX() + speed);
+        this.position.setX(this.position.getX() + speed);
     }
 
     public void walkY() {
         int factor = (this.direction == "up") ? -1 : 1;
         int speed = this.getSpeed() * factor;
-        this.setY(this.getY() + speed);
+        this.position.setY(this.position.getY() + speed);
     }
 
     public void initializeCollisionBox() {
@@ -72,9 +57,9 @@ public class Entity {
         String direction = this.getDirection();
 
         if (direction == "up") {
-            int xLeft = this.getX() + 15;
-            int xRight = this.getX() + (this.game.tileSize/2);
-            int yTop = this.getY() - (this.game.tileSize/2 - 30);
+            int xLeft = this.position.getX() + 15;
+            int xRight = this.position.getX() + (this.game.tileSize/2);
+            int yTop = this.position.getY() - (this.game.tileSize/2 - 30);
 
             int colLeft = xLeft / this.game.tileSize;
             int colRight = xRight / this.game.tileSize;
@@ -94,9 +79,9 @@ public class Entity {
         }
 
         if (direction == "down") {
-            int xLeft = this.getX() + 15;
-            int xRight = this.getX() + (this.game.tileSize/2);
-            int yBottom = this.getY() + (this.game.tileSize + 5);
+            int xLeft = this.position.getX() + 15;
+            int xRight = this.position.getX() + (this.game.tileSize/2);
+            int yBottom = this.position.getY() + (this.game.tileSize + 5);
 
             int colLeft = xLeft / this.game.tileSize;
             int colRight = xRight / this.game.tileSize;
@@ -114,9 +99,9 @@ public class Entity {
         }
 
         if (direction == "left") {
-            int xLeft = this.getX();
-            int yTop = this.getY() - (this.game.tileSize/2 - 35);;
-            int yBottom = this.getY() + (this.game.tileSize);
+            int xLeft = this.position.getX();
+            int yTop = this.position.getY() - (this.game.tileSize/2 - 35);;
+            int yBottom = this.position.getY() + (this.game.tileSize);
 
             int colLeft = xLeft / this.game.tileSize;
             int rowTop = yTop / this.game.tileSize;
@@ -133,9 +118,9 @@ public class Entity {
             }
         }
         if (direction == "right") {
-            int xRight = this.getX() + (this.game.tileSize/2 + 10);
-            int yTop = this.getY() - (this.game.tileSize/2 - 35);;
-            int yBottom = this.getY() + (this.game.tileSize);
+            int xRight = this.position.getX() + (this.game.tileSize/2 + 10);
+            int yTop = this.position.getY() - (this.game.tileSize/2 - 35);;
+            int yBottom = this.position.getY() + (this.game.tileSize);
 
             int colRight = xRight / this.game.tileSize;
             int rowTop = yTop / this.game.tileSize;

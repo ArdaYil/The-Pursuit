@@ -6,6 +6,7 @@ import java.io.*;
 
 import entity.Player;
 import main.Game;
+import vector.Vector2D;
 
 public class Map {
     private static int renderBoundary = 60;
@@ -154,6 +155,26 @@ public class Map {
         }
     }
 
+    public Vector2D getDrawingPosition(Vector2D worldPosition, Player player) {
+        int drawX = worldPosition.getX() - player.position.getX() + player.screenX;
+        int drawY = worldPosition.getY() - player.position.getY() + player.screenY;
+
+        return new Vector2D(drawX, drawY);
+    }
+
+    public boolean checkBoundaries(Vector2D drawPosition, Player player) {
+        int xLeft = player.screenX - this.game.screenWidth/2 - renderBoundary;
+        int xRight = player.screenX + this.game.screenWidth/2 + renderBoundary;
+        int yTop = player.screenY - this.game.screenHeight/2 - renderBoundary;
+        int yBottom = player.screenY + this.game.screenHeight/2 + renderBoundary;
+        int x = drawPosition.getX();
+        int y = drawPosition.getY();
+
+        if (x < xLeft || x > xRight || y <  yTop || y > yBottom) return false;
+
+        return true;
+    }
+
     public void draw(Graphics2D g2) {
         int tileSize = this.game.tileSize;
 
@@ -167,17 +188,11 @@ public class Map {
                 int worldX = col * tileSize;
                 int worldY = row * tileSize;
 
-                int drawX = worldX - player.getX() + player.screenX;
-                int drawY = worldY - player.getY() + player.screenY;
+                Vector2D drawPosition = this.getDrawingPosition(new Vector2D(worldX, worldY), this.game.player);
 
-                int xLeft = player.screenX - this.game.screenWidth/2 - renderBoundary;
-                int xRight = player.screenX + this.game.screenWidth/2 + renderBoundary;
-                int yTop = player.screenY - this.game.screenHeight/2 - renderBoundary;
-                int yBottom = player.screenY + this.game.screenHeight/2 + renderBoundary;
+                if (!this.checkBoundaries(drawPosition, this.game.player)) continue;
 
-                if (drawX < xLeft || drawX > xRight || drawY <  yTop || drawY > yBottom) continue;
-
-                g2.drawImage(tile.image, drawX, drawY, tileSize, tileSize, null);
+                g2.drawImage(tile.image, drawPosition.getX(), drawPosition.getY(), tileSize, tileSize, null);
             }
         }
     }

@@ -5,6 +5,7 @@ import java.awt.*;
 
 import entity.Player;
 import map.Map;
+import vector.Vector2D;
 
 public class Game extends JPanel implements Runnable{
     private static final int originalTileSize = 16;
@@ -22,6 +23,7 @@ public class Game extends JPanel implements Runnable{
 
     private static final int FPS = 60;
 
+    public MartManager martManager = new MartManager(this);
     public Map map;
     public Thread gameThread;
     public Player player;
@@ -35,6 +37,8 @@ public class Game extends JPanel implements Runnable{
         this.map = new Map(this);
         this.addKeyListener(keyInput);
         this.setFocusable(true);
+
+        this.martManager.createMerchant(new Vector2D(1, 1));
 
         player = new Player(this, keyInput);
     }
@@ -79,6 +83,7 @@ public class Game extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
+        this.martManager.draw(g2);
         this.map.draw(g2);
         this.player.draw(g2);
 
