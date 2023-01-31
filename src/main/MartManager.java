@@ -1,6 +1,7 @@
 package main;
 
 import entity.MartMerchant;
+import entity.NPC;
 import vector.Vector2D;
 import util.Array;
 
@@ -22,13 +23,15 @@ public class MartManager {
         merchant.position.setX(position.getX() * tileSize);
         merchant.position.setY(position.getY() * tileSize);
 
+        NPC.insertNPC(merchant);
+
         this.merchants.push(merchant);
     }
 
     public void draw(Graphics2D g2) {
         for (Object merchant : this.merchants.getArray()) {
             if (merchant == null) return;
-            System.out.println(merchant);
+
             if (merchant instanceof MartMerchant) {
                 ((MartMerchant)merchant).draw(g2);
             }

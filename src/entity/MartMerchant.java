@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class MartMerchant extends Entity {
+public class MartMerchant extends NPC {
     private BufferedImage image;
 
     public MartMerchant(Game game) {
@@ -31,7 +31,6 @@ public class MartMerchant extends Entity {
         int tileSize = this.game.tileSize;
 
         Vector2D drawPosition = this.game.map.getDrawingPosition(this.position, this.game.player);
-        System.out.println(drawPosition.toString());
-        g2.drawImage(this.image, drawPosition.getX() * tileSize, drawPosition.getY() * tileSize, tileSize, tileSize, null);
+        g2.drawImage(this.image, drawPosition.getX(), drawPosition.getY() , tileSize, tileSize, null);
     }
 }
