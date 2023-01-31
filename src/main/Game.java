@@ -21,7 +21,7 @@ public class Game extends JPanel implements Runnable{
     public static final int worldCols = 30;
     public static final int worldRows = 20;
 
-    private static final int FPS = 60;
+    private static final int FPS = 30;
 
     public MartManager martManager = new MartManager(this);
     public Map map;
@@ -38,7 +38,7 @@ public class Game extends JPanel implements Runnable{
         this.addKeyListener(keyInput);
         this.setFocusable(true);
 
-        this.martManager.createMerchant(new Vector2D(10, 23));
+        this.martManager.createMerchant(new Vector2D(31, 21));
 
         player = new Player(this, keyInput);
     }

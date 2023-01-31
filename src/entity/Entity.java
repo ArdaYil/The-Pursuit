@@ -67,11 +67,15 @@ public class Entity {
 
             int tileLeftNum = this.game.map.map[colLeft][rowTop];
             int tileRightNum = this.game.map.map[colRight][rowTop];
+            NPC npcRight = NPC.getNPCFromCoordinates(new Vector2D(colLeft, rowTop));
+            NPC npcLeft = NPC.getNPCFromCoordinates(new Vector2D(colRight, rowTop));
 
             Tile tileLeft = this.game.map.tiles[tileLeftNum];
             Tile tileRight = this.game.map.tiles[tileRightNum];
 
-            if (tileLeft.canCollide == true || tileRight.canCollide == true) {
+            boolean npcCollision = (npcRight != null && npcRight.canCollide) || (npcLeft != null && npcLeft.canCollide);
+
+            if (tileLeft.canCollide == true || tileRight.canCollide == true || npcCollision) {
                 this.isColliding = true;
             }
 
@@ -85,15 +89,19 @@ public class Entity {
 
             int colLeft = xLeft / this.game.tileSize;
             int colRight = xRight / this.game.tileSize;
-            int rowTop = yBottom / this.game.tileSize;
+            int rowBottom = yBottom / this.game.tileSize;
 
-            int tileLeftNum = this.game.map.map[colLeft][rowTop];
-            int tileRightNum = this.game.map.map[colRight][rowTop];
+            int tileLeftNum = this.game.map.map[colLeft][rowBottom];
+            int tileRightNum = this.game.map.map[colRight][rowBottom];
+            NPC npcRight = NPC.getNPCFromCoordinates(new Vector2D(colLeft, rowBottom));
+            NPC npcLeft = NPC.getNPCFromCoordinates(new Vector2D(colRight, rowBottom));
 
             Tile tileLeft = this.game.map.tiles[tileLeftNum];
             Tile tileRight = this.game.map.tiles[tileRightNum];
 
-            if (tileLeft.canCollide == true || tileRight.canCollide == true) {
+            boolean npcCollision = (npcRight != null && npcRight.canCollide) || (npcLeft != null && npcLeft.canCollide);
+
+            if (tileLeft.canCollide == true || tileRight.canCollide == true || npcCollision) {
                 this.isColliding = true;
             }
         }
@@ -109,11 +117,15 @@ public class Entity {
 
             int tileTopNum = this.game.map.map[colLeft][rowTop];
             int tileBottomNum = this.game.map.map[colLeft][rowBottom];
+            NPC npcTop = NPC.getNPCFromCoordinates(new Vector2D(colLeft, rowTop));
+            NPC npcBottom = NPC.getNPCFromCoordinates(new Vector2D(colLeft, rowBottom));
+
+            boolean npcCollision = (npcTop != null && npcTop.canCollide) || (npcBottom != null && npcBottom.canCollide);
 
             Tile tileTop = this.game.map.tiles[tileTopNum];
             Tile tileBottom = this.game.map.tiles[tileBottomNum];
 
-            if (tileTop.canCollide == true || tileBottom.canCollide == true) {
+            if (tileTop.canCollide == true || tileBottom.canCollide == true || npcCollision) {
                 this.isColliding = true;
             }
         }
@@ -128,11 +140,15 @@ public class Entity {
 
             int tileTopNum = this.game.map.map[colRight][rowTop];
             int tileBottomNum = this.game.map.map[colRight][rowBottom];
+            NPC npcTop = NPC.getNPCFromCoordinates(new Vector2D(colRight, rowTop));
+            NPC npcBottom = NPC.getNPCFromCoordinates(new Vector2D(colRight, rowBottom));
+
+            boolean npcCollision = (npcTop != null && npcTop.canCollide) || (npcBottom != null && npcBottom.canCollide);
 
             Tile tileTop = this.game.map.tiles[tileTopNum];
             Tile tileBottom = this.game.map.tiles[tileBottomNum];
 
-            if (tileTop.canCollide == true || tileBottom.canCollide == true) {
+            if (tileTop.canCollide == true || tileBottom.canCollide == true || npcCollision) {
                 this.isColliding = true;
             }
         }
