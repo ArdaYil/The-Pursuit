@@ -21,13 +21,15 @@ public class Game extends JPanel implements Runnable{
     public static final int worldCols = 30;
     public static final int worldRows = 20;
 
-    private static final int FPS = 30;
+    public static final int baseFPS = 60;
+    public static int FPS = 60;
 
     public MartManager martManager = new MartManager(this);
     public Map map;
     public Thread gameThread;
     public Player player;
     public KeyboardInput keyInput = new KeyboardInput();
+    public GameMenu menu = new GameMenu(keyInput);
 
     public Game() {
         //tileSize = 16;
@@ -68,7 +70,7 @@ public class Game extends JPanel implements Runnable{
             }
 
             if (System.nanoTime() - t >= Math.pow(10, 9)) {
-                System.out.println(fpsCounter);
+                System.out.println("FPS: " + fpsCounter);
                 t = System.nanoTime();
                 fpsCounter = 0;
             }
@@ -86,6 +88,7 @@ public class Game extends JPanel implements Runnable{
         this.map.draw(g2);
         this.martManager.draw(g2);
         this.player.draw(g2);
+        this.menu.draw(g2);
 
         g2.dispose();
     }

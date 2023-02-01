@@ -1,5 +1,6 @@
 package entity;
 
+import inventory.Inventory;
 import main.Game;
 import main.KeyboardInput;
 
@@ -15,10 +16,12 @@ public class Player extends Entity {
     private int counter = 0;
     private int baseSpeed = 3;
     private int sprintSpeed = 10;
+    private Inventory inventory;
 
     public Player(Game game, KeyboardInput keyInput) {
         super(game);
 
+        this.inventory = new Inventory();
         this.setDefaultValues();
         this.setPlayerImages();
         this.keyInput = keyInput;

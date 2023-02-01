@@ -148,6 +148,9 @@ public class Map {
 
             this.tiles[6] = new Tile();
             this.tiles[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Dirt.png"));
+
+            this.tiles[7] = new Tile();
+            this.tiles[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Water4.png"));
         }
 
         catch(IOException ex) {

@@ -15,6 +15,7 @@ public class Entity {
     public int screenX;
     public int screenY;
     public Vector2D position;
+    private int health = 100;
 
     public Entity(Game game) {
         this.position = new Vector2D();
@@ -26,7 +27,8 @@ public class Entity {
     }
 
     public int getSpeed() {
-        return this.speed;
+        double quotient = (double)Game.FPS / (double)Game.baseFPS;
+        return Math.max((int)(this.speed / quotient), 1);
     }
 
     public String getDirection() {
