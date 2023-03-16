@@ -10,7 +10,7 @@ import vector.Vector2D;
 
 public class Map {
     private static int renderBoundary = 60;
-    public Tile[] tiles = new Tile[10];
+    public Tile[] tiles = new Tile[53];
     public int[][] map;
     private int baseRows;
     private int baseCols;
@@ -28,7 +28,8 @@ public class Map {
 
     public Map(Game game) {
         this.game = game;
-        this.initializeTiles();
+
+        new Tile.TileInitializer(this.tiles);
 
         Dimension baseDimensions = this.getBaseDimensions();
         this.baseCols = baseDimensions.width;
@@ -120,42 +121,6 @@ public class Map {
         dimension.height = rowHolder;
 
         return dimension;
-    }
-
-    public void initializeTiles() {
-        try {
-            this.tiles[0] = new Tile();
-            this.tiles[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/GrassTile.png"));
-            this.tiles[0].canCollide = false;
-
-            this.tiles[1] = new Tile();
-            this.tiles[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/TreeTile.png"));
-            this.tiles[1].canCollide = true;
-
-            this.tiles[2] = new Tile();
-            this.tiles[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/BrickWall.png"));
-            this.tiles[2].canCollide = true;
-
-            this.tiles[3] = new Tile();
-            this.tiles[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/UnlockedDoor.png"));
-
-            this.tiles[4] = new Tile();
-            this.tiles[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/LockedDoor.png"));
-            this.tiles[4].canCollide = true;
-
-            this.tiles[5] = new Tile();
-            this.tiles[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/WoodFloor.png"));
-
-            this.tiles[6] = new Tile();
-            this.tiles[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Dirt.png"));
-
-            this.tiles[7] = new Tile();
-            this.tiles[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Water4.png"));
-        }
-
-        catch(IOException ex) {
-            ex.printStackTrace();
-        }
     }
 
     public Vector2D getDrawingPosition(Vector2D worldPosition, Player player) {

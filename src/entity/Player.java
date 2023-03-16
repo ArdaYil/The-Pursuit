@@ -77,9 +77,9 @@ public class Player extends Entity {
     }
 
     private void setDefaultValues() {
-        this.position.setX(this.game.tileSize * 10);
-        this.position.setY(this.game.tileSize * 23);
-        this.setDirection("up");
+        this.position.setX(this.game.tileSize * 123);
+        this.position.setY(this.game.tileSize * 129);
+        this.setDirection("down");
         this.setSpeed(this.baseSpeed);
     }
 
