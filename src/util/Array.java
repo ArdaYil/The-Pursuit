@@ -1,6 +1,6 @@
 package util;
 
-public class Array{
+public class Array<T> {
     private static final int defaultLength = 10;
     private Object[] array;
     public int length;

@@ -22,7 +22,7 @@ public class Game extends JPanel implements Runnable{
     public static final int worldRows = 20;
 
     public static final int baseFPS = 60;
-    public static int FPS = 60;
+    public static int FPS = 30;
 
     public MartManager martManager = new MartManager(this);
     public Map map;

@@ -143,6 +143,20 @@ public class Map {
         return true;
     }
 
+    private Vector2D findRandomFreeSpot() {
+        for (int row = 0; row < this.worldRows; row++) {
+            for (int col = 0; col < this.worldCols; col++) {
+                int number = this.map[col][row];
+
+                Tile tile = this.tiles[number];
+            }
+        }
+    }
+
+    private Vector2D findRandomFreeSpot(int rightX, int leftX, int lowerY, int upperY) {
+
+    }
+
     public void draw(Graphics2D g2) {
         int tileSize = this.game.tileSize;
 

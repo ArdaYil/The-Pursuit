@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Player extends Entity {
+    private static final int baseX = 123;
+    private static final int baseY = 129;
+
     private BufferedImage up1, up2, up3, down1, down2, down3, right1, right2, right3, left1, left2, left3;
     private KeyboardInput keyInput;
     private int imageCount = 1;
@@ -76,9 +79,17 @@ public class Player extends Entity {
         return this.right1;
     }
 
+    private void setX(int x) {
+        this.position.setX(x);
+    }
+
+    private void setY(int y) {
+        this.position.setY(y);
+    }
+
     private void setDefaultValues() {
-        this.position.setX(this.game.tileSize * 123);
-        this.position.setY(this.game.tileSize * 129);
+        this.setX(this.game.tileSize * baseX);
+        this.setY(this.game.tileSize * baseSpeed);
         this.setDirection("down");
         this.setSpeed(this.baseSpeed);
     }
