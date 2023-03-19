@@ -6,8 +6,10 @@ public class GameMenu {
     private boolean menuOpen = false;
     private KeyboardInput keyboard;
     private boolean escPressed;
+    private Game game;
 
-    public GameMenu(KeyboardInput keyboard) {
+    public GameMenu(KeyboardInput keyboard, Game game) {
+        this.game = game;
         this.keyboard = keyboard;
         this.escPressed = keyboard.escPressed;
     }
@@ -18,12 +20,14 @@ public class GameMenu {
         }
 
         if (this.menuOpen == true) {
-
+            // Code for open menu
         }
 
         else {
-
+            // Code for closed menu
         }
+
+        this.game.gamePaused = this.menuOpen;
 
         escPressed = this.keyboard.escPressed;
     }

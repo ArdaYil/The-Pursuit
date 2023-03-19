@@ -27,12 +27,14 @@ public class Game extends JPanel implements Runnable{
     public static final int baseFPS = 60;
     public static int FPS = 60;
 
+    public boolean gamePaused = false;
+
     public MartManager martManager = new MartManager(this);
     public Map map;
     public Thread gameThread;
     public Player player;
     public KeyboardInput keyInput = new KeyboardInput();
-    public GameMenu menu = new GameMenu(keyInput);
+    public GameMenu menu = new GameMenu(keyInput, this);
 
     public Game() {
         //tileSize = 16;
@@ -56,7 +58,10 @@ public class Game extends JPanel implements Runnable{
     }
 
     public void execute() {
-        this.update();
+        if (!this.gamePaused) {
+            this.update();
+        };
+
         this.repaint();
     }
 
@@ -85,6 +90,7 @@ public class Game extends JPanel implements Runnable{
     public void update() {
         this.player.update();
         Slime.updateSlimes();
+        //System.out.println(Thread.activeCount());
     }
 
     public void paintComponent(Graphics g) {
@@ -94,8 +100,8 @@ public class Game extends JPanel implements Runnable{
         this.map.draw(g2);
         this.martManager.draw(g2);
         this.player.draw(g2);
-        this.menu.draw(g2);
         Slime.drawSlimes(g2);
+        this.menu.draw(g2);
 
         g2.dispose();
     }

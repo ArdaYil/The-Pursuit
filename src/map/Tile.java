@@ -29,7 +29,7 @@ public class Tile {
             this.tiles = tiles;
 
             this.tiles[0] = new Tile(getClass().getResourceAsStream("/tiles/Grass.png"), false);
-            this.tiles[1] = new Tile(getClass().getResourceAsStream("/tiles/BigHouse1.png"), false);
+            this.tiles[1] = new Tile(getClass().getResourceAsStream("/tiles/BigHouse1.png"), true);
             this.tiles[2] = new Tile(getClass().getResourceAsStream("/tiles/BigHouse10.png"), true);
             this.tiles[3] = new Tile(getClass().getResourceAsStream("/tiles/BigHouse11.png"), true);
             this.tiles[4] = new Tile(getClass().getResourceAsStream("/tiles/BigHouse12.png"), true);
@@ -51,7 +51,7 @@ public class Tile {
             this.tiles[20] = new Tile(getClass().getResourceAsStream("/tiles/BigTree4.png"), true);
             this.tiles[21] = new Tile(getClass().getResourceAsStream("/tiles/BigTree5.png"), true);
             this.tiles[22] = new Tile(getClass().getResourceAsStream("/tiles/BigTree6.png"), true);
-            this.tiles[23] = new Tile(getClass().getResourceAsStream("/tiles/BigTree7.png"), true);
+            this.tiles[23] = new Tile(getClass().getResourceAsStream("/tiles/BigTree7.png"), false);
             this.tiles[24] = new Tile(getClass().getResourceAsStream("/tiles/BigTree8.png"), true);
             this.tiles[25] = new Tile(getClass().getResourceAsStream("/tiles/BigTree9.png"), false);
             this.tiles[26] = new Tile(getClass().getResourceAsStream("/tiles/BrickWall.png"), true);

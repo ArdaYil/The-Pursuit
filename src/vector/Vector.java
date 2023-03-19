@@ -13,6 +13,11 @@ public class Vector {
         this.setY(y);
     }
 
+    public void multiply(int factor) {
+        this.x = this.x * factor;
+        this.y = this.y * factor;
+    }
+
     public void setX(int x) {
         this.x = x;
     }

@@ -21,7 +21,7 @@ public class Map {
     private Game game;
 
     private static String[] mapFiles = {
-            "/Maps/Acrine.txt",
+            "/Maps/map.txt",
     };
 
     private static int[][] mapComposition = {
@@ -159,7 +159,6 @@ public class Map {
     }
 
     public Direction getDirection(Vector2D current, Vector2D target) {
-        System.out.println(current + ", " +  target);
         boolean isHorizontal = current.getY() == target.getY();
 
         if (isHorizontal) {

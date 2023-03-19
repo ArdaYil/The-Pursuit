@@ -19,6 +19,7 @@ public class Slime extends Enemy {
     private static LinkedList<Slime> slimes = new LinkedList<>();
     private Pathfinding.Path currentPath = null;
     private Vector2D currentGoal = null;
+    private boolean isSearching = false;
 
     public Slime(Game game) {
         super(game);
@@ -45,19 +46,24 @@ public class Slime extends Enemy {
     private void walk() {
         if (this.isWalking) return;
 
-        if (this.currentPath == null || !this.currentPath.hasNext()) {
-           while (this.currentPath == null) {
-               Vector2D goal = this.game.map.findRandomFreeSpot(100, 150, 126, 156);
-               long c = System.nanoTime();
-               Pathfinding pathfinding = new Pathfinding(this.game, this.position, goal);
-               Path path = pathfinding.computePath();
-               System.out.println((System.nanoTime() - c)/1_000_000);
+        if ((this.currentPath == null || !this.currentPath.hasNext()) && isSearching == false) {
+            new Thread(() -> {
+                isSearching = true;
 
-               this.currentPath = path;
-           }
+                while (this.currentPath == null) {
+                    Vector2D goal = this.game.map.findRandomFreeSpot(100, 150, 126, 156);
+
+                    Pathfinding pathfinding = new Pathfinding(this.game, this.position, goal);
+                    Path path = pathfinding.computePath();
+
+                    this.currentPath = path;
+                }
+
+                isSearching = false;
+            }).start();
         }
 
-        if (currentPath.hasNext()) {
+        if (currentPath != null && currentPath.hasNext()) {
             Vector2D next = currentPath.getNext();
 
             Direction direction = this.game.map.getDirection(this.position, next);
@@ -94,7 +100,6 @@ public class Slime extends Enemy {
     }
 
     private void draw(Graphics2D g2) {
-        Player player = this.game.player;
         int worldX = this.getX();
         int worldY = this.getY();
 

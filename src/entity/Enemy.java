@@ -13,14 +13,28 @@ public class Enemy extends Entity {
     public Enemy(Game game) {
         super(game);
 
-        //Vector2D randomSpot = this.game.map.findRandomFreeSpot(100, 150, 126, 156);
-        Vector2D randomSpot = new Vector2D(120 * 48, 129 * 48);
+        Vector2D randomSpot = this.game.map.findRandomFreeSpot(110, 140, 126, 156);
+        randomSpot.multiply(this.game.tileSize);
 
         this.position = randomSpot;
         this.setSpeed(1);
     }
 
     public static void manageEnemies(Game game) {
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
+        new Slime(game);
         new Slime(game);
     }
 }
