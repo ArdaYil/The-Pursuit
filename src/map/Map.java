@@ -6,6 +6,8 @@ import java.io.*;
 
 import entity.Player;
 import main.Game;
+import util.Direction;
+import util.LinkedList;
 import vector.Vector2D;
 
 public class Map {
@@ -31,16 +33,16 @@ public class Map {
 
         new Tile.TileInitializer(this.tiles);
 
-        Dimension baseDimensions = this.getBaseDimensions();
-        this.baseCols = baseDimensions.width;
-        this.baseRows = baseDimensions.height;
+        Vector2D baseDimensions = this.getBaseDimensions();
+        this.baseCols = baseDimensions.getX();
+        this.baseRows = baseDimensions.getY();
         this.worldRows = this.baseRows * mapComposition.length;
         this.worldCols = this.baseCols * mapComposition[0].length;
         this.map = new int[this.worldCols][this.worldRows];
         this.initializeMap();
     }
 
-    public Dimension getBaseDimensions() {
+    public Vector2D getBaseDimensions() {
         int rows = 0;
         int cols = 0;
 
@@ -68,9 +70,9 @@ public class Map {
             ex.printStackTrace();
         }
 
-        Dimension baseDimensions = new Dimension();
-        baseDimensions.width = cols;
-        baseDimensions.height = rows;
+        Vector2D baseDimensions = new Vector2D();
+        baseDimensions.setX(cols);
+        baseDimensions.setY(rows);
 
         return baseDimensions;
     }
@@ -143,18 +145,65 @@ public class Map {
         return true;
     }
 
-    private Vector2D findRandomFreeSpot() {
-        for (int row = 0; row < this.worldRows; row++) {
-            for (int col = 0; col < this.worldCols; col++) {
-                int number = this.map[col][row];
+    public boolean isObstacle(Vector2D position) {
+        int number = this.map[position.getX()][position.getY()];
+        Tile tile = this.tiles[number];
 
-                Tile tile = this.tiles[number];
-            }
+        return tile.canCollide;
+    }
+
+    public Vector2D getCellFromCoordinate(Vector2D coordinate) {
+        int tileSize = this.game.tileSize;
+
+        return new Vector2D(coordinate.getX()/tileSize, coordinate.getY()/tileSize);
+    }
+
+    public Direction getDirection(Vector2D current, Vector2D target) {
+        System.out.println(current + ", " +  target);
+        boolean isHorizontal = current.getY() == target.getY();
+
+        if (isHorizontal) {
+            if (current.getX() < target.getX()) return Direction.RIGHT;
+            return Direction.LEFT;
+        }
+
+        if (current.getY() < target.getY()) return Direction.DOWN;
+
+        return Direction.UP;
+    }
+
+    public Vector2D findRandomFreeSpot(int leftX, int rightX, int bottomY, int topY) {
+        LinkedList<Vector2D> occupiedSpots = this.getAllOccupiedSpots(leftX, rightX, bottomY, topY);
+
+        if (occupiedSpots.size() == (rightX - leftX) * (bottomY - topY))
+            throw new IllegalArgumentException("There is no free spot for the given boundaries");
+
+        while (true) {
+            int randomX = MathUtil.random(leftX, rightX);
+            int randomY = MathUtil.random(bottomY, topY);
+
+            Vector2D newPosition = new Vector2D(randomX, randomY);
+
+            if (!occupiedSpots.has(newPosition)) return newPosition;
         }
     }
 
-    private Vector2D findRandomFreeSpot(int rightX, int leftX, int lowerY, int upperY) {
+    private LinkedList<Vector2D> getAllOccupiedSpots(int leftX, int rightX, int topY, int bottomY) {
+        LinkedList<Vector2D> list = new LinkedList<>();
 
+        for (int row = topY; row < bottomY; row++) {
+            for (int col = leftX; col < rightX; col++) {
+                int number = this.map[col][row];
+
+                Tile tile = this.tiles[number];
+
+                if (tile.canCollide == false) continue;
+
+                list.addLast(new Vector2D(col, row));
+            }
+        }
+
+        return list;
     }
 
     public void draw(Graphics2D g2) {

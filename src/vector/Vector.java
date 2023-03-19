@@ -30,7 +30,18 @@ public class Vector {
     }
 
     @Override
+    public boolean equals(Object other) {
+        if (other == this) return true;
+
+        if (!(other instanceof Vector)) return false;
+
+        Vector newOther = (Vector)other;
+
+        return this.x == newOther.x && this.y == newOther.y;
+    }
+
+    @Override
     public String toString() {
-        return "{ X: " + this.getX() + " Y: " + this.getY() + " }";
+        return "Vector: { X: " + this.getX() + " Y: " + this.getY() + " }";
     }
 }

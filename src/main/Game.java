@@ -3,7 +3,10 @@ package main;
 import javax.swing.JPanel;
 import java.awt.*;
 
+import entity.Enemy;
+import entity.Entity;
 import entity.Player;
+import entity.Slime;
 import map.Map;
 import vector.Vector2D;
 
@@ -22,7 +25,7 @@ public class Game extends JPanel implements Runnable{
     public static final int worldRows = 20;
 
     public static final int baseFPS = 60;
-    public static int FPS = 30;
+    public static int FPS = 60;
 
     public MartManager martManager = new MartManager(this);
     public Map map;
@@ -39,6 +42,8 @@ public class Game extends JPanel implements Runnable{
         this.map = new Map(this);
         this.addKeyListener(keyInput);
         this.setFocusable(true);
+
+        Enemy.manageEnemies(this);
 
         this.martManager.createMerchant(new Vector2D(31, 21));
 
@@ -79,6 +84,7 @@ public class Game extends JPanel implements Runnable{
 
     public void update() {
         this.player.update();
+        Slime.updateSlimes();
     }
 
     public void paintComponent(Graphics g) {
@@ -89,6 +95,7 @@ public class Game extends JPanel implements Runnable{
         this.martManager.draw(g2);
         this.player.draw(g2);
         this.menu.draw(g2);
+        Slime.drawSlimes(g2);
 
         g2.dispose();
     }

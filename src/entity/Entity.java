@@ -3,17 +3,20 @@ package entity;
 import java.awt.*;
 import main.Game;
 import map.Tile;
+import util.Direction;
 import vector.Vector2D;
 
 public class Entity {
     private int speed;
     protected final int collisionBoxSize = 20;
-    private String direction;
+    private Direction direction;
     protected Rectangle collisionBox;
     protected boolean isColliding;
     protected Game game;
     public int screenX;
     public int screenY;
+    protected int imageCount = 1;
+    protected int counter = 0;
     public Vector2D position;
     private int health = 100;
 
@@ -31,7 +34,7 @@ public class Entity {
         return Math.max((int)(this.speed / quotient), 1);
     }
 
-    public String getDirection() {
+    public Direction getDirection() {
         return this.direction;
     }
 
@@ -40,14 +43,15 @@ public class Entity {
     }
 
     public void walkX() {
-        int factor = (this.direction == "left") ? -1 : 1;
+        int factor = (this.direction == Direction.LEFT) ? -1 : 1;
         int speed = this.getSpeed() * factor;
         this.position.setX(this.position.getX() + speed);
     }
 
     public void walkY() {
-        int factor = (this.direction == "up") ? -1 : 1;
+        int factor = (this.direction == Direction.UP) ? -1 : 1;
         int speed = this.getSpeed() * factor;
+
         this.position.setY(this.position.getY() + speed);
     }
 
@@ -56,12 +60,12 @@ public class Entity {
     }
 
     public void manageCollision() {
-        String direction = this.getDirection();
+        Direction direction = this.getDirection();
 
-        if (direction == "up") {
+        if (direction == Direction.UP) {
             int xLeft = this.position.getX() + 15;
             int xRight = this.position.getX() + (this.game.tileSize/2);
-            int yTop = this.position.getY() - (this.game.tileSize/2 - 30);
+            int yTop = this.position.getY() - (this.game.tileSize/2 - 60);
 
             int colLeft = xLeft / this.game.tileSize;
             int colRight = xRight / this.game.tileSize;
@@ -84,7 +88,7 @@ public class Entity {
             return;
         }
 
-        if (direction == "down") {
+        if (direction == Direction.DOWN) {
             int xLeft = this.position.getX() + 15;
             int xRight = this.position.getX() + (this.game.tileSize/2);
             int yBottom = this.position.getY() + (this.game.tileSize + 5);
@@ -108,9 +112,9 @@ public class Entity {
             }
         }
 
-        if (direction == "left") {
+        if (direction == Direction.LEFT) {
             int xLeft = this.position.getX();
-            int yTop = this.position.getY() - (this.game.tileSize/2 - 35);;
+            int yTop = this.position.getY() - (this.game.tileSize/2 - 65);
             int yBottom = this.position.getY() + (this.game.tileSize);
 
             int colLeft = xLeft / this.game.tileSize;
@@ -131,9 +135,9 @@ public class Entity {
                 this.isColliding = true;
             }
         }
-        if (direction == "right") {
+        if (direction == Direction.RIGHT) {
             int xRight = this.position.getX() + (this.game.tileSize/2 + 10);
-            int yTop = this.position.getY() - (this.game.tileSize/2 - 35);;
+            int yTop = this.position.getY() - (this.game.tileSize/2 - 65);
             int yBottom = this.position.getY() + (this.game.tileSize);
 
             int colRight = xRight / this.game.tileSize;
@@ -156,7 +160,27 @@ public class Entity {
         }
     }
 
-    public void setDirection(String direction) {
+    public void walkTo(Vector2D position) {
+
+    }
+
+    public void setX(int x) {
+        this.position.setX(x);
+    }
+
+    public void setY(int y) {
+        this.position.setY(y);
+    }
+
+    public int getX() {
+        return this.position.getX();
+    }
+
+    public int getY() {
+        return this.position.getY();
+    }
+
+    public void setDirection(Direction direction) {
         this.direction = direction;
     }
 }

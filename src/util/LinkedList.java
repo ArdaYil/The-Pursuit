@@ -75,6 +75,14 @@ public class LinkedList<T> implements Iterable<T> {
         return firstValue;
     }
 
+    public boolean has(T element) {
+        for (T currentElement : this) {
+            if (currentElement.equals(element)) return true;
+        }
+
+        return false;
+    }
+
     public T deleteLast() {
         if (this.first == null) {
             throw new NoSuchElementException();
@@ -154,10 +162,23 @@ public class LinkedList<T> implements Iterable<T> {
                 prev.setNext(next);
                 next.setPrev(prev);
 
+                this.count--;
+
                 return currentValue.getValue();
             }
 
             currentValue = currentValue.getNext();
+        }
+
+        return null;
+    }
+
+    public T get(int index) {
+        int counter = 0;
+
+        for (T element : this) {
+            if (counter == index) return element;
+            counter++;
         }
 
         return null;

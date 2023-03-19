@@ -3,6 +3,7 @@ package entity;
 import inventory.Inventory;
 import main.Game;
 import main.KeyboardInput;
+import util.Direction;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -15,8 +16,6 @@ public class Player extends Entity {
 
     private BufferedImage up1, up2, up3, down1, down2, down3, right1, right2, right3, left1, left2, left3;
     private KeyboardInput keyInput;
-    private int imageCount = 1;
-    private int counter = 0;
     private int baseSpeed = 3;
     private int sprintSpeed = 10;
     private Inventory inventory;
@@ -52,21 +51,21 @@ public class Player extends Entity {
     }
 
     private BufferedImage getImageToDraw() {
-        if (this.getDirection() == "up") {
+        if (this.getDirection() == Direction.UP) {
             if (this.imageCount == 2) return this.up2;
             if (this.imageCount == 3) return this.up3;
 
             return this.up1;
         }
 
-        if (this.getDirection() == "down") {
+        if (this.getDirection() == Direction.DOWN) {
             if (this.imageCount == 2) return this.down2;
             if (this.imageCount == 3) return this.down3;
 
             return this.down1;
         }
 
-        if (this.getDirection() == "left") {
+        if (this.getDirection() == Direction.LEFT) {
             if (this.imageCount == 2) return this.left2;
             if (this.imageCount == 3) return this.left3;
 
@@ -79,18 +78,10 @@ public class Player extends Entity {
         return this.right1;
     }
 
-    private void setX(int x) {
-        this.position.setX(x);
-    }
-
-    private void setY(int y) {
-        this.position.setY(y);
-    }
-
     private void setDefaultValues() {
-        this.setX(this.game.tileSize * baseX);
-        this.setY(this.game.tileSize * baseSpeed);
-        this.setDirection("down");
+        this.setX(this.game.tileSize * this.baseX);
+        this.setY(this.game.tileSize * this.baseY);
+        this.setDirection(Direction.DOWN);
         this.setSpeed(this.baseSpeed);
     }
 
@@ -105,19 +96,19 @@ public class Player extends Entity {
 
     public void update() {
         if (this.keyInput.upPressed) {
-            this.setDirection("up");
+            this.setDirection(Direction.UP);
         }
 
         else if (this.keyInput.downPressed) {
-            this.setDirection("down");
+            this.setDirection(Direction.DOWN);
         }
 
         else if (this.keyInput.leftPressed) {
-            this.setDirection("left");
+            this.setDirection(Direction.LEFT);
         }
 
         else if (this.keyInput.rightPressed) {
-            this.setDirection("right");
+            this.setDirection(Direction.RIGHT);
         }
 
         this.setSpeed(this.baseSpeed);
@@ -143,10 +134,13 @@ public class Player extends Entity {
 
             if (this.isColliding == true) return;
 
-            switch(this.getDirection()) {
-                case "up", "down" -> this.walkY();
-                case "left", "right" -> this.walkX();
-            }
+            Direction direction = this.getDirection();
+
+            if (direction == Direction.UP || direction == Direction.DOWN)
+                this.walkY();
+
+            else if (direction == Direction.RIGHT || direction == Direction.LEFT)
+                this.walkX();
         }
     }
 
