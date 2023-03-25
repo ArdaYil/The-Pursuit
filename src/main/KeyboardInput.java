@@ -3,6 +3,13 @@ package main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/*
+    Denna fil är en klass för tangent inmatning och är en singleton. Endast en instans av denna klass instansieras
+    som sedan avsänds globalt av hela applikationen. Danna klass implementerar KeyListener gränssnitten vilket har default
+    implementering som anropar de implementerade metoderna vid tangent inmatning.
+*/
+
+
 public class KeyboardInput implements KeyListener {
     public boolean upPressed, downPressed, rightPressed, leftPressed, controlKeyPressed = false;
     public boolean sprintPressed = false;

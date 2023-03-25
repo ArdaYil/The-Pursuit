@@ -1,5 +1,19 @@
 package map;
 
+/*
+    Denna fil är en klass för mappen. Mappen är en singleton. Detta objekt är ansvarig för att hålla referenser till
+    alla tiles, alla siffror för mappen i en 2D array, samt inläsning av textfiler till 2D array, map composition.
+    Slutligen är detta objekt ansvarig över att rendera skärmen.
+
+    Mappen är en 2D fil med siffror där varje siffra är kopplad till en bild så att programmet vet vilken bild som
+    bör visas på en viss del av skärmen. Textfilen har samma radlängd som antal rader vilket sedan görrs om till ett 2D fält
+    av programmet
+
+    Just nu används endast en stor textfil men map objektet kan sätta ihop flera textfiler till en 2D array. Hur mapen ska
+    komponeras besrkivs i en 2D array som heter map composition.
+*/
+
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.*;
@@ -204,6 +218,24 @@ public class Map {
 
         return list;
     }
+
+    /*
+        Mappen är betydligt större en det som får plats på skärmen
+        sättet jag renderar mappen på är genom att ta rutans nummer exempelvis (4, 5) dvs kolumn 4 rad 5 och sedan ta det
+        multiplicerad med rutstorleken som i detta fall är 48px detta ger oss den "logiska positionen" av rutan. Det jag sedan
+        gör är att kolla distansen mellan rutans logiska position och spelarens logiska position + spelarens offset för
+        att beräkna från spelarens mitt och inte det vänstra hörnet högst upp på spelaren. Distansen är differensen mellan
+        spelarens logiska position + offset - rutans logiska position. Detta värde är pixel kordinaten för antingen x eller
+        y värdet för rutan. Jag ritar sedan rutan på den x och y kordinat jag får. Rutans logiska position antal alltid samma värde
+        spelarens logiska position däremot ändras beroende på vart spelaren befinner sig i världen. Om en ruta har den logiska
+        positionen 100, 100 och spelaren har den logiska positionen 120, 120. Då ska ju rutan ritas 20 pixlar över spelaren
+        och 20 pixlar till vänster om spelaren.
+        Om rutan ritas utanför skärmens gränser så kommer renderingen för den rutan att skippas för att spelet ska vara mer optimerad
+        Annars kommer det finnas bilder i heapen som ej används.
+
+        För att klargöra: logisk position är positionen i spelvärlden och fysisk position är positionen i mappen eller
+        kolumn och rad i textfilen för mappen.
+    */
 
     public void draw(Graphics2D g2) {
         int tileSize = this.game.tileSize;

@@ -1,3 +1,8 @@
+/*
+    Denna fil är en klass för merchants i spelet. Implementationen finns men merchantent är inte placerad i spelvärden
+    då tanken är att merchanten ska vara i butiker och inte ute.
+*/
+
 package entity;
 
 import main.Game;

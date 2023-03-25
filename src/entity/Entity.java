@@ -1,3 +1,10 @@
+/*
+    Denna fil är en superklass för alla entities.
+    En entity är en instans av en fiende exempelvis slime, en npc, eller en spelare.
+    Enemy klassen innehåller objekt variabler som alla entites ska ha exempelvis positionering, och variabler som anger status,
+    samt metoder som exempelvis gå().
+*/
+
 package entity;
 
 import java.awt.*;
@@ -26,7 +33,6 @@ public class Entity {
         this.isColliding = false;
         this.screenX = this.game.screenWidth/2 - this.game.tileSize/2;
         this.screenY = this.game.screenHeight/2 - this.game.tileSize/2;
-        this.initializeCollisionBox();
     }
 
     public int getSpeed() {
@@ -53,10 +59,6 @@ public class Entity {
         int speed = this.getSpeed() * factor;
 
         this.position.setY(this.position.getY() + speed);
-    }
-
-    public void initializeCollisionBox() {
-
     }
 
     public void manageCollision() {

@@ -1,5 +1,10 @@
 package entity;
 
+/*
+    Denna fil är en klass för slimes. Denna klass inehåller viktig information som vägen slimes gå, vitiga objektvariabler
+    såsom position och metoder såsom updatera bilden osv.
+*/
+
 import main.Game;
 import util.Array;
 import util.Direction;
@@ -47,6 +52,10 @@ public class Slime extends Enemy {
         if (this.isWalking) return;
 
         if ((this.currentPath == null || !this.currentPath.hasNext()) && isSearching == false) {
+            // Är använder jag ett lambda uttryck eftersom att trådar tar in ett funktionellt gränssnitt som argument
+            // Gränssnittet kräver ett objekt som implementerar gränssnittets metod run. Med ett lambda uttryck
+            // Kommer detta att ske automatiskt av java, vilket leder till renare och mer läsbar kod.
+
             new Thread(() -> {
                 isSearching = true;
 

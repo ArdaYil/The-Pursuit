@@ -2,6 +2,12 @@ package main;
 
 import java.awt.*;
 
+/*
+    Denna fil är en klass för spelmenyn. Den har variabler so anger ifall knappen för spelmenyn trycks ner, om spel
+    menyn är öpppen och metoder för att hander spel meny operationer som att rita spelmenyn.
+*/
+
+
 public class GameMenu {
     private boolean menuOpen = false;
     private KeyboardInput keyboard;

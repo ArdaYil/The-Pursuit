@@ -1,5 +1,11 @@
 package main;
 
+/*
+    Denna fil är en klass för spelet. Spel objektet är en singelton som delas globalt bland alla objekt som använder det.
+    Spel objektet innehåller all väsentlig information som spelet bör ha som exemeplvis tile storlek, antal tiles i skärmvyn
+    Skärmstorleken, själva renderingen och uppdatering av alla objekt.
+*/
+
 import javax.swing.JPanel;
 import java.awt.*;
 
@@ -25,7 +31,7 @@ public class Game extends JPanel implements Runnable{
     public static final int worldRows = 20;
 
     public static final int baseFPS = 60;
-    public static int FPS = 60;
+    public static int FPS = 30;
 
     public boolean gamePaused = false;
 
@@ -52,32 +58,47 @@ public class Game extends JPanel implements Runnable{
         player = new Player(this, keyInput);
     }
 
+    // Här skapas speltråden, vilket kommer göra det möjligt att stoppa spel koden utan att hela programmet stoppas
+
     public void startGame() {
         this.gameThread = new Thread(this);
         gameThread.start();
     }
 
     public void execute() {
+        // Denna metod updaterar all speldata såsom positioner och sedan renderar spelet beroende på speldata.
+
         if (!this.gamePaused) {
             this.update();
         };
 
+        // Genom att anropa repaint som finns på alla jkomponenter kommer detta objekts paintComponent metod att
+        // köras med ett grafik objekt som parameter utan att jag behöver förse metoden med det som ett argument
+
         this.repaint();
     }
 
+
+    // Run metoden körs så fort en tråd skapas som tar in detta objekt som argument, givet att objektet implementerar det
+    // Funktionella gränssnitten runable
+
     @Override
     public void run() {
-        int delta = 0;
         long currentTime = System.nanoTime();
         long fpsCounter = 0;
         long t = System.nanoTime();
 
         while (gameThread != null) {
+            // Genom att kolla nanosekunds skillnaden mellan varje loop kan vi se när en fps dels sekund har passerat
+            // Då uppdaterar vi all speldata och renderar spelet
+
             if (System.nanoTime() - currentTime >= Math.pow(10, 9)/FPS) {
                 fpsCounter += 1;
                 currentTime = System.nanoTime();
                 this.execute();
             }
+
+            // Denna del av koden har ingen betydelse för spelet utan printar bara FPSen varje sekund.
 
             if (System.nanoTime() - t >= Math.pow(10, 9)) {
                 System.out.println("FPS: " + fpsCounter);
@@ -93,6 +114,9 @@ public class Game extends JPanel implements Runnable{
         //System.out.println(Thread.activeCount());
     }
 
+    // Denna metod kommer från JComponent och ger mig ett grafik objekt som parameter.
+
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;

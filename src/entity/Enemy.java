@@ -1,3 +1,11 @@
+
+/*
+    Denna fil är en superklass för alla fiender.
+    Eftersom att det kan finnas olika typer av fiender så måste dessa finder ha någon basklass så att de kan dela
+    funktionalitet. Sedan kan varje enemy klass ha egna implementationer dvs polymorphism.
+    Denna klass har en statisk metod för att hantera fiender.
+*/
+
 package entity;
 
 import main.Game;

@@ -5,6 +5,15 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+/*
+    Denna fil innehåller variabler och metoder för tiles. En tile är kopplat till ett nummer och innehåller data
+    såsom bilden som ska renderas. Genom att sedan placera det nummret för en fysisk position i mapfilen kan spelet ta den
+    fysiska positionen göra om den till en logisk position beräkna pixel kordinaten och använda siffran för att ta fram rätt tile
+    när rätt tile har hittats kommer spelet veta vilket bild som ska ritas
+
+    Denna logik finns inte i denna fil utan i map fillen men all viktig information för de operationerna finns i denna fil
+ */
+
 public class Tile {
     public BufferedImage image;
     public boolean canCollide;

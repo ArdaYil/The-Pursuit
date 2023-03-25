@@ -1,5 +1,12 @@
 package main;
 
+/*
+    Denna fil är en klass för som hanterar marten i spelet dvs afärerna. MartManager är en singleton dvs det finns endast
+    en instans av denna klass som används av hela applikationen. MartManager objektet bästämmer när och hur merchants ska
+    skapas, vart de ska placeras och hålla referenser till alla merchants
+*/
+
+
 import entity.MartMerchant;
 import entity.NPC;
 import vector.Vector2D;

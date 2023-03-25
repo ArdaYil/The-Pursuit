@@ -1,5 +1,11 @@
 package entity;
 
+/*
+    Denna fil är en klass för spelaren. Spelaren är en singleton vilket betyder att det bara finns en global
+    instans av denna klass som används av hela applikationen. Denna klass innehåller all vesentlig information
+    och funktionaltet för spelaren såsom position, rikting bas position, bilder, osv.
+*/
+
 import inventory.Inventory;
 import main.Game;
 import main.KeyboardInput;

@@ -1,3 +1,8 @@
+/*
+    Denna fil är en superklass för alla npcs förutom fiender.
+    Tanken är att denna klass ska hålla referenser til alla npcs ute i mappen.
+*/
+
 package entity;
 
 import main.Game;
