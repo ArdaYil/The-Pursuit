@@ -21,17 +21,14 @@ public class Game extends JPanel implements Runnable{
     private static final int tileScale = 3;
 
     public static int tileSize = originalTileSize * tileScale;
-    private static final int columns = 20;
-    private static final int rows = 15;
+    public static final int columns = 20;
+    public static final int rows = 15;
 
     public static final int screenWidth = columns * tileSize;
     public static final int screenHeight = rows * tileSize;
 
-    public static final int worldCols = 30;
-    public static final int worldRows = 20;
-
     public static final int baseFPS = 60;
-    public static int FPS = 30;
+    public static int FPS = 60;
 
     public boolean gamePaused = false;
 

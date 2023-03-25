@@ -91,7 +91,6 @@ public class Player extends Entity {
         this.setSpeed(this.baseSpeed);
     }
 
-    @Override
     public void initializeCollisionBox() {
         this.collisionBox = new Rectangle();
         this.collisionBox.width = this.collisionBoxSize;

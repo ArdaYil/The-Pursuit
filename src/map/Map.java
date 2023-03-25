@@ -240,19 +240,30 @@ public class Map {
     public void draw(Graphics2D g2) {
         int tileSize = this.game.tileSize;
 
-        for (int row = 0; row < this.worldRows; row++) {
-            for (int col = 0; col < this.worldCols; col++) {
+        Player player = this.game.player;
+
+        int rows = this.game.rows/2;
+        int cols = this.game.columns/2;
+
+        int startRow = player.getY()/48 - rows;
+        int endRow = startRow + this.game.rows;
+        int startCol = player.getX()/48 - cols;
+        int endCol = startCol + this.game.columns;
+
+        int loops = 0;
+
+        for (int row = startRow; row < endRow + 1; row++) {
+            for (int col = startCol; col < endCol + 2; col++) {
                 int number = this.map[col][row];
 
                 Tile tile = this.tiles[number];
 
-                Player player = this.game.player;
                 int worldX = col * tileSize;
                 int worldY = row * tileSize;
 
                 Vector2D drawPosition = this.getDrawingPosition(new Vector2D(worldX, worldY), this.game.player);
 
-                if (!this.checkBoundaries(drawPosition, this.game.player)) continue;
+                //if (!this.checkBoundaries(drawPosition, this.game.player)) continue;
 
                 g2.drawImage(tile.image, drawPosition.getX(), drawPosition.getY(), tileSize, tileSize, null);
             }
