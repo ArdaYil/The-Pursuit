@@ -3,6 +3,13 @@ package util;
 import main.Game;
 import vector.Vector2D;
 
+/*
+Denna fill är till för en klass som skapar pathfinding objekt. Pathfinding objekt används för att breäkna bästa vägen
+mellan två punkter i spelbanan. Pathinding objektet returnerar sedan ett path objekt som innehåller alla steg som bör tas
+för att nå målet. Pathfindingen är ganska komplicerad och utan bra pseudokod kan det vara väldigt svårt att förstå koden om
+man själv inte kan algoritmen
+ */
+
 public class Pathfinding {
     private Game panel;
     private Node start;
