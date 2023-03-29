@@ -7,22 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc169ed7-9714-459a-b102-73f3cb974b5c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/editor/00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/editor/01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/editor/02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/editor/03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/editor/04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/editor/05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/editor/06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Array.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Array.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/LinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Pathfinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Pathfinding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vector/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector/Vector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vector/Vector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vector/Vector2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

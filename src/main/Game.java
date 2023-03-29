@@ -106,6 +106,8 @@ public class Game extends JPanel implements Runnable{
     }
 
     public void update() {
+        // Metoden uppdaterar spelaredata såsom spelarens positon och monstrenas positioner
+
         this.player.update();
         Slime.updateSlimes();
         //System.out.println(Thread.activeCount());
@@ -115,6 +117,8 @@ public class Game extends JPanel implements Runnable{
 
     @Override
     public void paintComponent(Graphics g) {
+        // Metoden ritar allt som ska finnas på skärmen såsom spelare, mappen, menyn osv
+
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
