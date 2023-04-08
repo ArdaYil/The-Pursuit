@@ -1,5 +1,9 @@
 package vector;
 
+/*
+Denna fil är en superklass för vector objekt. Ett vector objekt används för att ange data i form av hastighet, rotation positon osv
+ */
+
 public class Vector {
     private int x;
     private int y;

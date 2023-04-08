@@ -3,6 +3,28 @@ package util;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/*
+Detta är en fil för en dublerad länkad lista vilket betyder att varje nod pekar åt den framförvarande noden och den
+bakomvarande noden.
+tidskomplexiteter i big O notation:
+    addFirst: O(1)
+    addLast: O(1)
+    removeFirst: O(1)
+    removeLast: O(1)
+    get: O(n)
+    remove: O(n) om det är i mitten
+    reverse: O(n)
+
+Eftersom att de flesta operationerna är av O(1) tidskomplexitet är detta en väldigt bra datastruktur för prestanda och effektivitet
+Ta en array exempelvis antingen ska arrayen växa när den blir full, eller så ska den ta alldeles för mycket utrymme vilket inte är bra
+Om den tar för mycket utrumme kommer programmet att bli slöare och om jag ska behöva göra den större varje gång den blir full
+kommer programmet igen bli slöare. Alla dessa problem undviks med dubblerade länkade listor eftersom att dessa operationer
+inte är beroende av listans storlek.
+
+O(1) betyder ej beroende av input storleken
+O(n) betyder att tiden för operationen är proportionell med input storleken dvs en linjär ökning
+ */
+
 public class LinkedList<T> implements Iterable<T> {
     private Node<T> first;
     private Node<T> last;

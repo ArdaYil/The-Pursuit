@@ -36,7 +36,11 @@ public class Entity {
     }
 
     public int getSpeed() {
+<<<<<<< HEAD
         double quotient = (double)Game.baseFPS / (double)Game.baseFPS;
+=======
+        double quotient = (double)Game.FPS / (double)Game.baseFPS;
+>>>>>>> 3d7db4f097f8335f8761cc3e21fa464d8a09a53b
         return Math.max((int)(this.speed / quotient), 1);
     }
 
